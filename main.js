@@ -1,6 +1,13 @@
-//Clair Harmsen
-//Ezekiel Turnbough
+// Clair Harmsen
+// Ezekiel Turnbough
 // 3/28/2025
+
+const readline = require('readline');
+
+const rl = readline.createInterface({
+  input: process.stdin,
+  output: process.stdout
+});
 
 const url = 'https://gutendex.com/books?search=';
  
@@ -11,5 +18,8 @@ async function getData(str){
     console.log(json.results[i].title);
   }
 }
- 
-getData("sherlock");
+
+rl.question("Search for a book: ", (query) => {
+  getData(query);
+  rl.close();
+});
