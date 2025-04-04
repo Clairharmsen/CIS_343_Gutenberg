@@ -58,7 +58,7 @@ async function fetchBookText(bookId) {
     const bookText = await textResponse.text();
 
     console.log("\n--- Book Preview ---");
-    console.log(bookText.substring(0, 1000)); // Display the first 1000 characters
+    console.log(bookText.substring(0, 1000)); // Display the first 1000 character
     console.log("\n(Press Enter to continue...)");
 
     rl.close();
