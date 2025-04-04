@@ -27,10 +27,10 @@ async function getData(query, searchBy = "search") {
       console.log(`${book.id}. ${book.title} by ${book.authors.map(a => a.name).join(", ")}`);
     });
 
-    rl.question("\nSelect a book by number: ", (num) => {
-      const choice = parseInt(num) - 1;
-      if (choice >= 0 && choice < json_file.results.length) {
-        fetchBookText(json_file.results[choice].id);
+    rl.question("\nSelect a book by number: ", (id) => {
+      const book = json_file.results.find(book => book.id === parseInt(id));
+      if (book) {
+        fetchBookText(book.id);
       } else {
         console.log("Invalid selection.");
         rl.close();
