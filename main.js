@@ -13,7 +13,7 @@
 
     const url = "https://gutendex.com/books/";
     const historyFile = 'history.json';
-    const pageSize = 1000; // characters per page
+    const pageSize = 1000;
 
     function saveToHistory(book) {
       let history = [];
@@ -88,7 +88,7 @@ async function getData(query, searchBy = "search") {
     rl.question("\nSelect a book by ID: ", async (id) => {
       const book = json_file.results.find(book => book.id === parseInt(id));
       if (book) {
-        await fetchBookText(book);  // ✅ call your full-text fetch function
+        await fetchBookText(book);
       } else {
         console.log("Invalid selection.");
         rl.close();
@@ -127,8 +127,6 @@ function showMenu() {
           return;
         }
       }
-
-
 
   rl.question("Search for a book (title or author): ", (query) => {
     getData(query);
