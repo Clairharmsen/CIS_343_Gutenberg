@@ -38,7 +38,7 @@ async function getData(query, searchBy = "search") {
     });
 
   } catch (error) {
-    console.error("Error fetching data:", error);
+    console.error("Error fetching data:" , error);
   }
 }
 
