@@ -23,14 +23,14 @@ async function getData(query, searchBy = "search") {
     }
 
     console.log("\nSearch Results:");
-    json_file.results.slice(0, 5).forEach((book, index) => {
+    json_file.results.forEach((book, index) => {
       console.log(`${book.id}. ${book.title} by ${book.authors.map(a => a.name).join(", ")}`);
     });
 
     rl.question("\nSelect a book by number: ", (id) => {
       const book = json_file.results.find(book => book.id === parseInt(id));
       if (book) {
-        fetchBookText(book.id);
+        console.log(book.formats);
       } else {
         console.log("Invalid selection.");
         rl.close();
@@ -44,7 +44,7 @@ async function getData(query, searchBy = "search") {
 
 async function fetchBookText(bookId) {
   try {
-    const response = await fetch(`https://gutendex.com/books/${bookId}/`);
+    const response = await fetch(`${url}${searchBy}=${encodeURIComponent(query)}`);
     const json = await response.json();
 
     const textUrl = json.formats["text/plain"];
